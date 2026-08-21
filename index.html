@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버츄얼 스트리머 공식 홈페이지</title>
+    <style>
+        /* 컬러 팔레트 및 기본 설정 */
+        :root {
+            --pastel-red: #ff8a8a;
+            --light-red: #fff0f0;
+            --white: #ffffff;
+            --text-dark: #555555;
+            --chzzk-green: #00ffa3;
+        }
+        
+        body {
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+
+        /* 상단 네비게이션 바 */
+        header {
+            background-color: var(--pastel-red);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(255, 138, 138, 0.3);
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* 메인 배너 영역 */
+        .hero {
+            background-color: var(--light-red);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            color: var(--pastel-red);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-chzzk {
+            background-color: var(--chzzk-green);
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 콘텐츠 영역 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--pastel-red);
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        /* 주간 방송 일정표 */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .schedule-card {
+            background-color: var(--light-red);
+            border: 2px solid var(--pastel-red);
+            border-radius: 15px;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .day {
+            font-weight: bold;
+            color: var(--pastel-red);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* 하단 푸터 */
+        footer {
+            background-color: var(--pastel-red);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🌸 스트리머 이름</a>
+        <nav>
+            <a href="#about">소개</a>
+            <a href="#schedule">방송일정</a>
+            <a href="#rules">방송규칙</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <!-- 이곳에 버츄얼 캐릭터 이미지를 넣을 수 있습니다 -->
+        <h1>반가워요! 치지직 버츄얼 스트리머 OOO입니다!</h1>
+        <p>매주 즐거운 게임과 소통 방송으로 찾아올게요 🎮✨</p>
+        <a href="https://chzzk.naver.com/" target="_blank" class="btn-chzzk">치지직 방송국 바로가기</a>
+    </section>
+
+    <div class="container">
+        <section id="schedule">
+            <h2 class="section-title">📅 주간 방송 일정</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="day">월요일</div>
+                    <div>오후 8시<br>종합게임</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">화요일</div>
+                    <div>휴방 💤</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">수요일</div>
+                    <div>오후 8시<br>저챗/소통</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">목요일</div>
+                    <div>오후 8시<br>시청자 참여</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">금요일</div>
+                    <div>휴방 💤</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">토요일</div>
+                    <div>오후 6시<br>정기 콘텐츠</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="day">일요일</div>
+                    <div>오후 6시<br>노래방 🎤</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Virtual Streamer OOO. All rights reserved.</p>
+        <p>비즈니스 문의: wolfghost15@naver.com</p>
+    </footer>
+
+</body>
+</html>
