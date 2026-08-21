@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>버츄얼 스트리머 공식 홈페이지</title>
+    <title>버츄얼 스트리머 루헤르 공식 홈페이지</title>
     <style>
         /* 컬러 팔레트 및 기본 설정 */
         :root {
@@ -12,6 +12,7 @@
             --white: #ffffff;
             --text-dark: #555555;
             --chzzk-green: #00ffa3;
+            --border-color: #ffd6d6;
         }
         
         body {
@@ -30,6 +31,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(255, 138, 138, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
@@ -47,15 +51,13 @@
             transition: opacity 0.2s;
         }
 
-        nav a:hover {
-            opacity: 0.8;
-        }
+        nav a:hover { opacity: 0.8; }
 
-        /* 메인 배너 영역 */
+        /* 메인 배너 및 소셜 영역 */
         .hero {
             background-color: var(--light-red);
             text-align: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
         }
 
         .hero h1 {
@@ -70,6 +72,7 @@
         }
 
         .btn-chzzk {
+            display: inline-block;
             background-color: var(--chzzk-green);
             color: #000000;
             padding: 12px 30px;
@@ -78,9 +81,34 @@
             font-weight: bold;
             font-size: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
         }
 
-        /* 콘텐츠 영역 */
+        /* 소셜 URL 목록 */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-btn {
+            background: var(--white);
+            color: var(--pastel-red);
+            border: 1px solid var(--pastel-red);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--pastel-red);
+            color: var(--white);
+        }
+
+        /* 공통 콘텐츠 영역 */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -91,22 +119,73 @@
             text-align: center;
             color: var(--pastel-red);
             font-size: 28px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        /* 1. 공지사항 */
+        .notice-board {
+            background-color: var(--light-red);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 60px;
+        }
+
+        .notice-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .notice-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-date {
+            color: var(--pastel-red);
+            font-weight: bold;
+            width: 100px;
+            flex-shrink: 0;
+        }
+
+        .notice-title {
+            color: var(--text-dark);
+            text-decoration: none;
+            flex-grow: 1;
+        }
+
+        .notice-title:hover {
+            text-decoration: underline;
+            color: var(--pastel-red);
         }
 
         /* 주간 방송 일정표 */
+        .schedule-section {
+            margin-bottom: 60px;
+        }
+
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 15px;
+            margin-bottom: 25px;
         }
 
         .schedule-card {
-            background-color: var(--light-red);
+            background-color: var(--white);
             border: 2px solid var(--pastel-red);
             border-radius: 15px;
             padding: 20px 10px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(255, 138, 138, 0.05);
         }
 
         .day {
@@ -114,6 +193,81 @@
             color: var(--pastel-red);
             font-size: 18px;
             margin-bottom: 10px;
+        }
+
+        /* 세부 일정 보러가기 버튼 */
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid var(--pastel-red);
+            color: var(--pastel-red);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--pastel-red);
+            color: var(--white);
+        }
+
+        .text-center { text-align: center; }
+
+        /* 유튜브 영상 모음 */
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .youtube-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(255, 138, 138, 0.15);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+
+        .youtube-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .youtube-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 30px;
+        }
+
+        .youtube-info {
+            padding: 15px;
+        }
+
+        .youtube-title {
+            margin: 0;
+            font-size: 15px;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* 영상이 없을 때 빈 화면 */
+        .empty-state {
+            background-color: var(--light-red);
+            color: var(--pastel-red);
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         /* 하단 푸터 */
@@ -129,23 +283,54 @@
 <body>
 
     <header>
-        <a href="#" class="logo">🌸 스트리머 이름</a>
+        <a href="#" class="logo">🐺 루헤르</a>
         <nav>
-            <a href="#about">소개</a>
-            <a href="#schedule">방송일정</a>
-            <a href="#rules">방송규칙</a>
+            <a href="#notice">📢공지사항📢</a>
+            <a href="#schedule">📅방송일정📅</a>
+            <a href="#youtube">🎬유튜브🎬</a>
         </nav>
     </header>
 
     <section class="hero">
-        <!-- 이곳에 버츄얼 캐릭터 이미지를 넣을 수 있습니다 -->
-        <h1>반가워요! 치지직 버츄얼 스트리머 OOO입니다!</h1>
-        <p>매주 즐거운 게임과 소통 방송으로 찾아올게요 🎮✨</p>
-        <a href="https://chzzk.naver.com/" target="_blank" class="btn-chzzk">치지직 방송국 바로가기</a>
+        <h1>반가워요! 치지직 버츄얼 스트리머 루헤르입니다!</h1>
+        <p>매주 즐거운 게임과 소통 방송으로 찾아올게요! 🎮✨</p>
+        
+        <a href="https://chzzk.naver.com/f76e8dfffae1ffe4b54e0b3a83434349" target="_blank" class="btn-chzzk">치지직 채널 바로가기</a>
+        
+        <!-- 2. 소셜 URL 목록 -->
+        <div class="social-links">
+            <a href="#" class="social-btn" target="_blank">📺 유튜브</a>
+            <a href="#" class="social-btn" target="_blank">🐦 X (트위터)</a>
+            <a href="#" class="social-btn" target="_blank">📸 인스타그램</a>
+            <a href="#" class="social-btn" target="_blank">☕ 팬카페</a>
+        </div>
     </section>
 
     <div class="container">
-        <section id="schedule">
+        
+        <!-- 1. 공지사항 -->
+        <section id="notice">
+            <h2 class="section-title">📢 공지사항</h2>
+            <div class="notice-board">
+                <ul class="notice-list">
+                    <li>
+                        <span class="notice-date">2026.08.21</span>
+                        <a href="#" class="notice-title">이번 주 주말 방송 시간 변경 안내 (오후 6시 -> 오후 8시)</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2026.08.15</span>
+                        <a href="#" class="notice-title">새로운 굿즈(아크릴 스탠드) 통판 시작합니다! 🎉</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2026.08.01</span>
+                        <a href="#" class="notice-title">공식 팬카페 오픈! 많이 가입해주세요 🌸</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 방송 일정 -->
+        <section id="schedule" class="schedule-section">
             <h2 class="section-title">📅 주간 방송 일정</h2>
             <div class="schedule-grid">
                 <div class="schedule-card">
@@ -158,7 +343,7 @@
                 </div>
                 <div class="schedule-card">
                     <div class="day">수요일</div>
-                    <div>오후 8시<br>저챗/소통</div>
+                    <div>오후 8시<br>소통</div>
                 </div>
                 <div class="schedule-card">
                     <div class="day">목요일</div>
@@ -177,13 +362,62 @@
                     <div>오후 6시<br>노래방 🎤</div>
                 </div>
             </div>
+            <!-- 3. 세부 일정 보러가기 (새 탭 열기 target="_blank") -->
+            <div class="text-center">
+                <a href="https://cafe.naver.com/" target="_blank" class="btn-outline">세부 일정 보러가기 🗓️</a>
+            </div>
         </section>
+
+        <!-- 4. 유튜브 영상 모음 -->
+        <section id="youtube">
+            <h2 class="section-title">▶️ 최신 유튜브 영상</h2>
+            <!-- 자바스크립트로 이 영역 안에 비디오 그리드 또는 빈 화면이 채워집니다 -->
+            <div id="youtube-container"></div>
+        </section>
+
     </div>
 
     <footer>
         <p>© 2026 Virtual Streamer OOO. All rights reserved.</p>
-        <p>비즈니스 문의: wolfghost15@naver.com</p>
+        <p>비즈니스 문의: email@example.com</p>
     </footer>
 
+    <!-- 유튜브 렌더링 스크립트 -->
+    <script>
+        // 임시 영상 데이터 (실제 운영 시 이 배열에 영상 정보를 넣으면 됩니다)
+        // **영상이 없을 때를 테스트하고 싶다면 배열 안의 데이터를 모두 지우고 [] 로 만들어보세요!**
+        const videoData = [
+            { title: "첫 방송 하이라이트! 너무 떨렸어요 💦", thumb: "▶️", url: "#" },
+            { title: "공포게임 하다가 책상 부순 썰 풉니다", thumb: "▶️", url: "#" },
+            { title: "버츄얼 Q&A! 100문 100답 챌린지", thumb: "▶️", url: "#" },
+            { title: "노래뱅 다시보기 풀버전 (Track 1~15)", thumb: "▶️", url: "#" },
+            { title: "이 게임 진짜 갓겜입니다 (진짜임)", thumb: "▶️", url: "#" },
+            { title: "시참 대난투! 과연 승자는?", thumb: "▶️", url: "#" }
+        ];
+
+        const youtubeContainer = document.getElementById('youtube-container');
+
+        if (videoData.length === 0) {
+            // 영상이 없을 경우 표시
+            youtubeContainer.innerHTML = '<div class="empty-state">업로드 된 영상이 없어요. 🥲 조금만 기다려주세요!</div>';
+        } else {
+            // 영상이 있을 경우 (최대 10개까지만 잘라서 표시)
+            let htmlString = '<div class="youtube-grid">';
+            
+            videoData.slice(0, 10).forEach(video => {
+                htmlString += `
+                    <a href="${video.url}" class="youtube-card" target="_blank">
+                        <div class="youtube-thumb">${video.thumb}</div>
+                        <div class="youtube-info">
+                            <h3 class="youtube-title">${video.title}</h3>
+                        </div>
+                    </a>
+                `;
+            });
+            htmlString += '</div>';
+            
+            youtubeContainer.innerHTML = htmlString;
+        }
+    </script>
 </body>
 </html>
